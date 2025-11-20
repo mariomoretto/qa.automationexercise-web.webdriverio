@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "test": "wdio run wdio.conf.js", 
+    "test:ci": "wdio run wdio.conf.js",
+    "report": "allure generate allure-results --clean && allure open",
     "test:headless": "wdio run wdio.conf.js",               
     "test:headed": "cross-env HEADLESS=false wdio run wdio.conf.js",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
