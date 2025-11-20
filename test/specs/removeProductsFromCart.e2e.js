@@ -9,26 +9,26 @@ describe('Test Case 17 - Remove Products From Cart', () => {
         allure.addFeature('Carrinho');
         allure.addStory('Remover produto do carrinho');
 
-        // ACT 1 - Home -> Products
+        // ACT 1 - Home > Products
         allure.startStep('Abrir página inicial e acessar tela de produtos');
         await HomePage.open();
         await ProductsPage.goToProducts();
         allure.endStep();
 
-        // ACT 2 - Adicionar produto ao carrinho
+        // ACT 2 - add  produto ao carrinho
         allure.startStep('Adicionar produto ao carrinho');
         await ProductsPage.addProductToCart(0);
         await ProductsPage.openCartFromModal();
         allure.endStep();
 
-        // ACT 3 - Remover produto do carrinho
+        // ACT 3 -remove o produto do carrinho
         allure.startStep('Remover primeiro produto do carrinho');
         await CartPage.removeFirstProduct();
         allure.endStep();
 
         // ASSERT
         allure.startStep('Validar que o carrinho está vazio');
-        await CartPage.assertCartEmpty();   // valida mensagem "Cart is empty!"
+        await CartPage.assertCartEmpty();   // aqui valida mensagem "Cart is empty!"
         allure.endStep();
 
         await browser.pause(3000);

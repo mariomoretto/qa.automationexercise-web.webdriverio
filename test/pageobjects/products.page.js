@@ -1,7 +1,7 @@
 const Page = require('./page');
 
 class ProductsPage extends Page {
-    // --------- ELEMENTOS BÁSICOS ---------
+    // ------ ELEMENTOS BÁSICOS ---------
     get menuProducts() {
         return $('a[href="/products"]');
     }
@@ -14,12 +14,12 @@ class ProductsPage extends Page {
         return $('#submit_search');
     }
 
-    // Título "SEARCHED PRODUCTS"
+    //titulo "SEARCHED PRODUCTS"
     get searchedProductsTitle() {
         return $('h2.title.text-center');
     }
 
-    // Nome dos produtos retornados na busca
+    // nome dos produtos retornados na busca
     get productNames() {
         return $$('//div[@class="features_items"]/div//div[@class="productinfo text-center"]/p');
     }
@@ -29,7 +29,6 @@ class ProductsPage extends Page {
         return $$('.features_items .product-image-wrapper');
     }
 
-    // ---------- AÇÕES COMUNS / NAVEGAÇÃO ----------
 
     async goToProducts() {
         await this.menuProducts.click();
@@ -56,18 +55,10 @@ class ProductsPage extends Page {
         }
     }
 
-    // ---------- ADD TO CART PELO CARD (TC12 e TC17) ----------
-
-    /**
-     * Adiciona um produto ao carrinho pelo índice do card (0-based).
-     * - Faz scroll até o card;
-     * - Dá hover;
-     * - Clica no botão "Add to cart" do overlay daquele card.
-     */
     async addProductToCart(index) {
         const cards = await this.productCards;
 
-        // segurança: garante que o índice existe
+        // seguran~ca: garante que o índice existe
         if (!cards[index]) {
             throw new Error(`Nenhum card de produto encontrado no índice ${index}. Total de cards: ${cards.length}`);
         }
@@ -77,24 +68,19 @@ class ProductsPage extends Page {
         await card.scrollIntoView();
         await card.moveTo();
 
-        // botão "Add to cart" **dentro** do card
+        // botão "Add to cart" dentri do card
         const addBtn = await card.$('.product-overlay a.btn.btn-default.add-to-cart');
 
-        // garante que overlay apareceu
         await addBtn.waitForDisplayed({ timeout: 10000 });
 
-        // às vezes o WebdriverIO encrenca com clickable, então forçamos um clique via JS
         await browser.execute((el) => el.click(), addBtn);
     }
 
-    /**
-     * Apenas um alias sem lógica extra, usado no TC17.
-     */
     async addProductToCartByIndex(index) {
         await this.addProductToCart(index);
     }
 
-    // Link "View Cart" do modal depois de adicionar produto
+    //link "View Cart" do modal depois de adicionao produto
     get viewCartFromModalButton() {
         return $('//u[.="View Cart"]/parent::a');
     }
@@ -104,7 +90,7 @@ class ProductsPage extends Page {
         await this.viewCartFromModalButton.click();
     }
 
-    // ---------- DETALHE DO PRODUTO (TC13) ----------
+    // ------- DETALHE DO PRODUTO (TC13) ----------
 
     get firstProductViewLink() {
         return $('(//a[contains(text(),"View Product")])[1]');
@@ -129,14 +115,14 @@ class ProductsPage extends Page {
     }
 
     async openProductDetailByIndex(index) {
-        // Garante que a página volte para o topo,
-        // evitando que o anúncio embaixo da tela fique por cima do link
+        //garante que a pagina volte para o topo,
+        // evitan q o anuncio embaixo da tela fique por cima do link
         await browser.execute('window.scrollTo(0, 0);');
 
         const viewLinks = await $$('//a[contains(text(),"View Product")]');
         const link = viewLinks[index - 1];
 
-        // Centraliza o link na tela e garante que esteja clicável
+        //centraliza o link na tela e garante que esteja clicavel
         await link.scrollIntoView({ block: 'center', inline: 'center' });
         await link.waitForClickable({ timeout: 10000 });
 

@@ -10,7 +10,7 @@ class HomePage {
     async clickSignupLogin() {
         await this.signupLoginBtn.click();
     }
-     //método para abrir um produto
+     //metodo para abrir um produto
      get firstViewProductBtn() {
         return $('(//a[contains(text(),"View Product")])[1]');
     }

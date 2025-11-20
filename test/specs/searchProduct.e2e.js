@@ -17,7 +17,7 @@ describe('Test Case 2 - Search Product', () => {
         await ProductsPage.goToProducts();
         allure.endStep();
 
-        // ACT 2 - Efetuar busca
+        // ACT 2 - efetua busca
         allure.startStep(`Pesquisar produtos pelo termo "${searchTerm}"`);
         await ProductsPage.searchProduct(searchTerm);
         allure.endStep();

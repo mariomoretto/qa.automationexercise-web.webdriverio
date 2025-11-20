@@ -8,14 +8,13 @@ const allure      = require('@wdio/allure-reporter').default;
 describe('Test Case 1 - Registrar Usuário', () => {
     it('Deve registrar, validar e deletar usuário', async () => {
 
-        // META DADOS PARA O ALLURE
         allure.addFeature('Cadastro de Usuário');
         allure.addStory('Usuário cria conta, acessa e exclui o cadastro');
         allure.addSeverity('critical');
 
         // ARRANGE
         const user = userData.userDefault;   // objeto base
-        const fakeEmail = user.email;        // getter gera email dinâmico
+        const fakeEmail = user.email;        // getter p/ gerar email dinamico
         const name      = user.name;
 
         // ACT

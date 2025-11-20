@@ -32,7 +32,7 @@ class CartPage {
         expect(qty).toBe(expectedQty);
     }
 
-    // --- remover produto (X) ---
+    //-- remover produto (X) ---
     get deleteFirstProductIcon() {
         return $('a.cart_quantity_delete');
     }
@@ -41,8 +41,6 @@ class CartPage {
         await this.deleteFirstProductIcon.waitForClickable({ timeout: 10000 });
         await this.deleteFirstProductIcon.click();
     }
-
-    // se quiser por índice (0-based):
     get deleteButtons() {
         return $$('a.cart_quantity_delete');
     }
@@ -53,7 +51,7 @@ class CartPage {
         await btn.click();
     }
 
-    // --- mensagem "Cart is empty!" ---
+    // --- mensagem "Cart is empty!" 
     get emptyCartContainer() {
         return $('#empty_cart');
     }
@@ -69,15 +67,15 @@ class CartPage {
 
     async getRow(index) {
         const rows = await this.cartRows;
-        return rows[index - 1]; // 1-based
+        return rows[index - 1]; 
     }
 
     async assertLineValues(index, expectedPrice, expectedQty, expectedTotal) {
         const row = await this.getRow(index);
 
-        const priceText = await row.$('.cart_price p').getText();   // "Rs. 500"
-        const qtyText   = await row.$('.cart_quantity button').getText(); // "1"
-        const totalText = await row.$('.cart_total .cart_total_price').getText(); // "Rs. 500"
+        const priceText = await row.$('.cart_price p').getText();   
+        const qtyText   = await row.$('.cart_quantity button').getText(); 
+        const totalText = await row.$('.cart_total .cart_total_price').getText(); 
 
         const price = parseInt(priceText.replace(/\D/g, ''), 10);
         const qty   = parseInt(qtyText.trim(), 10);

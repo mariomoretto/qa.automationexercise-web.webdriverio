@@ -14,27 +14,27 @@ describe('Test Case 12 - Add Products in Cart', () => {
         const firstProductPrice  = 500; // Blue Top
         const secondProductPrice = 400; // Man Tshirt
 
-        // ACT 1 - Abrir home e ir para Products
+        // ACT 1 - abre home e ir para Products
         allure.startStep('Abrir página inicial e acessar tela de produtos');
         await HomePage.open();
         await ProductsPage.goToProducts();
         allure.endStep();
 
-        // ACT 2 - Adicionar primeiro produto
+        // ACT 2 - adicoioma primeiro produto
         allure.startStep('Adicionar primeiro produto ao carrinho');
         await ProductsPage.addProductToCart(0);     // 1º card
-        await ProductsPage.openCartFromModal();     // botão "View Cart"
+        await ProductsPage.openCartFromModal();     // botao View Cart
         allure.endStep();
 
-        // voltar para a tela de produtos (caso esteja no carrinho)
+        //volta para a tela de produtos, caso esteja no carrinho
         allure.startStep('Voltar para tela de produtos');
         await browser.back();
         allure.endStep();
 
-        // ACT 3 - Adicionar segundo produto
+        // ACT 3 - adiciona segundo produto
         allure.startStep('Adicionar segundo produto ao carrinho');
         await ProductsPage.addProductToCart(1);     // 2º card
-        await ProductsPage.openCartFromModal();     // botão "View Cart"
+        await ProductsPage.openCartFromModal();     //botao View Cart
         allure.endStep();
 
         // ASSERT

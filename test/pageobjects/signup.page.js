@@ -31,17 +31,17 @@ class SignupPage {
             await this.titleMrs.click();
         }
 
-        // Campos básicos
+        //campos basicos
         await this.password.setValue(user.password);
         await this.day.selectByVisibleText('5');
         await this.month.selectByVisibleText('May');
         await this.year.selectByVisibleText('1995');
 
-        // Checkboxes
+        //checkboxes
         await this.newsletter.click();
         await this.offers.click();
 
-        // Endereco info
+        //endereco info
         await this.firstName.setValue(user.firstName);
         await this.lastName.setValue(user.lastName);
         await this.company.setValue(user.company);

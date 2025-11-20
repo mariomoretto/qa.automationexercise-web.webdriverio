@@ -1,6 +1,6 @@
 module.exports = {
 
-    // Usuário padrão para cadastro
+    //usuário padrão para cadastro
     userDefault: {
         get email() {
             return `qa_${Date.now()}@gmail.com`;
@@ -20,7 +20,7 @@ module.exports = {
         mobile: "1497842544"
     },
 
-    // Usuário admin
+    //user admin
     userAdmin: {
         get email() {
             return `admin_${Date.now()}@gmail.com`;
@@ -40,7 +40,7 @@ module.exports = {
         mobile: "14988880000"
     },
 
-    // Usuário com dados inválidos
+    //user com dados inválidos
     userInvalid: {
         email: "email_invalido",
         name: "",
@@ -50,7 +50,7 @@ module.exports = {
         mobile: "ABCDEF"
     },
 
-    // Usuário somente leitura (não cadastra)
+    //user somente leitura (não cadastra)
     userStatic: {
         email: "userstatic@qa.com",
         password: "123456"

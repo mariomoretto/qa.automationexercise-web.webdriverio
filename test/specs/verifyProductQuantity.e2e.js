@@ -12,19 +12,19 @@ describe('Test Case 13 - Verify Product quantity in Cart', () => {
         // ARRANGE
         const desiredQty = 4;
 
-        // ACT 1 - Home -> Products
+        // ACT 1 - Home> Products
         allure.startStep('Abrir página inicial e acessar tela de produtos');
         await HomePage.open();
         await ProductsPage.goToProducts();
         allure.endStep();
 
-        // ACT 2 - Abrir detalhe do produto e alterar quantidade
+        // ACT 2 - abre detalhe do produto e alterar quantidade
         allure.startStep('Abrir detalhe do produto e definir quantidade');
         await ProductsPage.openProductDetailByIndex(1);     // View Product do 1º item
         await ProductsPage.setProductQuantity(desiredQty);  // altera para 4
         allure.endStep();
 
-        // ACT 3 - Adicionar ao carrinho e ir para o Cart
+        // ACT 3 - adiciona ao carrinho e vai  para o Cart
         allure.startStep('Adicionar produto ao carrinho e acessar tela do carrinho');
         await ProductsPage.addDetailProductToCart();        // botão Add to cart
         await ProductsPage.goToCartFromModal();             // botão "View Cart" no modal
