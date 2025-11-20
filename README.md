@@ -8,7 +8,7 @@
 - GitHub Actions
 - Padrão Page Object
 
-## Pré-requisitos
+## Pré-requisitos 
 - Node.js instalado (>= 18)
 - Java instalado (para Allure CLI)
 - Navegador Google Chrome
